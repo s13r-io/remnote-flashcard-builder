@@ -1,0 +1,43 @@
+{
+  "eval_id": 2,
+  "eval_name": "python-bidirectional-and-exam-prep",
+  "prompt": "Convert the Python basics notes file into RemNote flashcards. Read the file at evals/samples/python-basics-notes.md, analyze the programming concepts, data types, syntax, and language features described. Generate a comprehensive set of flashcards choosing the best card type for each concept. Pay attention to bidirectional relationships (like comparing strings vs lists vs tuples) and exam-preparation style distinctions. Output the flashcards to evals/samples/python-basics-notes-flashcards.md.",
+  "assertions": [
+    {
+      "name": "file_exists_and_non_empty",
+      "description": "Output file exists and contains at least 20 flashcards"
+    },
+    {
+      "name": "has_concept_cards",
+      "description": "Contains at least 4 Concept cards (::) for key programming concepts like variables, functions, loops, OOP"
+    },
+    {
+      "name": "has_bidirectional_cards",
+      "description": "Contains at least 2 Bidirectional Basic cards (<>) comparing related types (e.g., list vs tuple, string vs list)"
+    },
+    {
+      "name": "has_cloze_cards",
+      "description": "Contains at least 3 Cloze cards ({{ }}) for syntax facts and key terms"
+    },
+    {
+      "name": "has_multiple_choice",
+      "description": "Contains at least 1 Multiple-Choice card (>>A)) for exam-style distinction questions"
+    },
+    {
+      "name": "has_variety_of_types",
+      "description": "Uses at least 5 different card types (Concept, Cloze, Bidirectional, Forward Basic, Multiple-Choice)"
+    },
+    {
+      "name": "no_image_occlusion",
+      "description": "Contains no image occlusion syntax"
+    },
+    {
+      "name": "no_metadata",
+      "description": "Contains no HTML comments, metadata, or annotations"
+    },
+    {
+      "name": "covers_data_types",
+      "description": "Includes flashcards for: variables, strings, lists, tuples, dictionaries, and comparisons between them"
+    }
+  ]
+}
