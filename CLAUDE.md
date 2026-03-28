@@ -52,6 +52,13 @@ python workspace/quality_analysis.py <notes_file> <flashcards_file> [--llm-judge
 python workspace/quality_analysis.py <notes_file> <new_flashcards> <old_flashcards> --labels "New" "Old" [--llm-judge]
 ```
 
+## Reference Materials (docs/)
+
+The `docs/` folder contains **user-facing reference materials** — do NOT delete these unless explicitly asked:
+
+- **`RemNote_Flashcard_Types_Complete_Guide.md`** — Standalone guide for end users to understand RemNote's flashcard type system. Different audience than SKILL.md.
+- **`French Revolution (1789-1799).md`** — A real RemNote flashcard export showing the desired end product. Serves as a goal/reference for what the skill should produce.
+
 ## Key Files
 
 - **`remnote-flashcard-builder-skill/SKILL.md`** — Skill definition (copy to `~/.claude/skills/remnote-flashcard-builder/SKILL.md` to install)
