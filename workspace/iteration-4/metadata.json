@@ -1,0 +1,26 @@
+{
+  "iteration": 4,
+  "timestamp": "2026-03-28 08:34:29",
+  "test_cases": [
+    {
+      "id": 1,
+      "name": "cell-biology",
+      "input": "evals/samples/cell-biology-notes.md",
+      "output": "/Users/saurabh.karmakar/s13r-io/remnote-flashcard-builder/workspace/iteration-4/eval-1-cell-biology/with_skill/outputs/cell-biology-notes-flashcards.md"
+    },
+    {
+      "id": 2,
+      "name": "python-basics",
+      "input": "evals/samples/python-basics-notes.md",
+      "output": "/Users/saurabh.karmakar/s13r-io/remnote-flashcard-builder/workspace/iteration-4/eval-2-python-basics/with_skill/outputs/python-basics-notes-flashcards.md"
+    },
+    {
+      "id": 3,
+      "name": "world-war-2",
+      "input": "evals/samples/world-war-2-notes.md",
+      "output": "/Users/saurabh.karmakar/s13r-io/remnote-flashcard-builder/workspace/iteration-4/eval-3-world-war-2/with_skill/outputs/world-war-2-notes-flashcards.md"
+    }
+  ],
+  "total_generated": 3,
+  "total_expected": 3
+}

@@ -49,7 +49,7 @@ For each atomic unit, apply these questions in order. Stop at the first match:
 
 **Is this SIMPLE Q&A?** Pick direction:
 - **Reverse** (`<<`) if you encounter the ANSWER in practice and need to identify what it represents (given symptoms -> name condition; given property -> name the thing)
-- **Bidirectional** (`<>`) if recall needed BOTH directions (vocab pairs, symbol-name, abbreviation-expansion)
+- **Bidirectional** (`<>`) ONLY for true symmetric pairs where both directions have exactly one answer: abbreviation↔expansion, chemical symbol↔element name, foreign word↔translation. Do NOT use for person↔role, person↔country, or concept↔description — these are asymmetric (multiple people can hold the same role). Use forward (`>>`) or concept (`::`) instead.
 - **Forward** (`>>`) by default (question -> answer)
 
 **Still unsure?** Default to **FORWARD BASIC** (`>>`).
@@ -57,6 +57,10 @@ For each atomic unit, apply these questions in order. Stop at the first match:
 ### 3.5 Organize by Section
 
 Before generating output, group your classified cards by their source markdown section. Preserve the original header hierarchy. Cards without a clear header belong in a general section at the top.
+
+### 4. Verify Completeness
+
+Before writing output, cross-reference your cards against the source material section by section. For each section, confirm every key term, date, name, number, and concept appears in at least one card. If any fact is missing, add a card for it. **This step is mandatory.**
 
 ## Card Types: Syntax and Examples
 
@@ -71,11 +75,11 @@ Before generating output, group your classified cards by their source markdown s
 
 ## Principles
 
-1. **Exhaustiveness**: Extract EVERY learnable fact. Don't skip minor or obvious information.
+1. **Exhaustiveness**: Extract EVERY learnable fact. After generating cards, re-read the source and verify every fact, term, date, name, and concept has at least one corresponding card. **Completeness is more important than card count** — never skip a fact even if it seems minor.
 2. **Atomic units**: One idea per flashcard. Don't combine multiple concepts.
-3. **Type variety**: Use at least 5-6 different card types per document. Avoid all-Basic decks.
-4. **Exam prep emphasis**: Lean toward Multiple-Choice whenever content allows distinguishing between plausible options.
-5. **Unambiguity**: Cloze blanks and MC questions must have exactly one correct answer.
+3. **Type variety**: Use at least 5-6 different card types per document. **No single card type should exceed 30% of the deck.** If one type dominates, reclassify some cards using alternative types from the decision tree. Aim for balanced distribution across all applicable types.
+4. **Exam prep emphasis**: Use Multiple-Choice when content naturally presents distinguishing options between plausible alternatives. Do not force MC cards — use the decision tree faithfully.
+5. **Unambiguity**: Cloze blanks and MC questions must have exactly one correct answer. For cloze cards, blank only **proper nouns, technical terms, or specific numbers** that have no synonyms in context. Avoid blanking colloquial phrases ("powerhouse"), approximate quantities, or words with common synonyms ("fewer"/"less"). If a fact relies on a nickname or informal term, use a forward card instead.
 6. **Minimize redundancy**: If two cards test the same fact, use different types or angles.
 7. **Read first**: Read the whole source before classifying to understand context and relationships.
 8. **Bold the prompt**: Wrap the question, term, or identifying part of each card in `**bold**`. This makes cards scannable during review—the eye lands on what needs to be answered. Skip cloze cards (the {{ }} blank already serves this purpose).

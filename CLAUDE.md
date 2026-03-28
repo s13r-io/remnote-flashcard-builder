@@ -24,7 +24,19 @@ The skill uses a 7-question decision tree to classify each atomic fact into opti
 
 See `remnote-flashcard-builder-skill/SKILL.md` for complete decision tree and syntax reference.
 
-## Testing & Quality Analysis
+## Evaluation Workflow
+
+Evaluations use a two-step process. **Do NOT use an Anthropic API key or external scripts** — everything runs through Claude Code directly.
+
+### Step 1: Generate flashcards
+
+Spawn Claude Code agents that read `remnote-flashcard-builder-skill/SKILL.md` as instructions and an input notes file, then write flashcard output. Example agent prompt:
+
+> "You are a RemNote flashcard builder. Read the skill specification at `remnote-flashcard-builder-skill/SKILL.md` and the input notes at `evals/samples/<domain>-notes.md`. Follow the SKILL.md instructions EXACTLY. Write the output to `workspace/iteration-N/eval-X-<domain>/<domain>-notes-flashcards.md`."
+
+Run up to 3 agents in parallel for different domains.
+
+### Step 2: Evaluate outputs
 
 **`workspace/quality_analysis.py`** validates skill outputs across 9 dimensions:
 
@@ -33,18 +45,21 @@ See `remnote-flashcard-builder-skill/SKILL.md` for complete decision tree and sy
 **LLM-Judge (7-9):** answer unambiguity (cloze/MC), directionality appropriateness (>> vs << vs <>), pedagogical depth (cognitive levels).
 
 ```bash
+# Single domain evaluation
 python workspace/quality_analysis.py <notes_file> <flashcards_file> [--llm-judge]
+
+# Compare two iterations
+python workspace/quality_analysis.py <notes_file> <new_flashcards> <old_flashcards> --labels "New" "Old" [--llm-judge]
 ```
 
 ## Key Files
 
-- **`remnote-flashcard-builder.skill`** — Production skill file v1.1 (install in Claude Code)
-- **`remnote-flashcard-builder-skill/SKILL.md`** — Skill source definition (with bold + headers)
-- **`workspace/quality_analysis.py`** — Validation tool (9 dimensions, updated for headers)
-- **`workspace/iteration-4/`** — Latest test results (validated with bold + headers)
-- **`RELEASE_NOTES.md`** — v1.1 release documentation and changes
-- **`evals/samples/`** — Test data (cell biology, Python, WWII)
+- **`remnote-flashcard-builder.skill`** — Production skill file (install in Claude Code)
+- **`remnote-flashcard-builder-skill/SKILL.md`** — Skill source definition
+- **`workspace/quality_analysis.py`** — Validation tool (9 dimensions)
+- **`workspace/iteration-5/`** — Latest test results (8 domains)
+- **`evals/samples/`** — Test data (8 domains: cell biology, Python, WWII, physics, calculus, economics, organic chemistry, Shakespeare)
 
 ## Status
 
-✅ **v1.1 Production Ready.** Tested across 3 domains with 205+ flashcards. All 9 quality dimensions validated (100% on syntax/completeness in iteration 4). See `RELEASE_NOTES.md` for iteration 4 changes.
+Tested across 8 domains with iteration 5. Averages: 96.9% completeness, 0.89 evenness, 100% syntax, 93.5 directionality, 86.4 unambiguity, 98.8 pedagogical depth.
