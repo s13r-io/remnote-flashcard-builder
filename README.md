@@ -101,7 +101,7 @@ Tested across 3 domains with 2 iterations:
 
 For detailed information about how the skill works, see:
 - `SKILL_FINAL_SUMMARY.md` — Complete project documentation
-- `docs/RemNote_Flashcard_Types_Complete_Guide.md` — Full RemNote guide (bundled with skill)
+- `remnote-flashcard-builder-skill/SKILL.md` — Skill definition with decision tree and syntax reference
 
 ## 🔍 How It Works
 
@@ -123,8 +123,7 @@ For detailed information about how the skill works, see:
 ## 🎁 What You Get
 
 - A production-ready skill file (`remnote-flashcard-builder.skill`)
-- Complete documentation in SKILL.md
-- Bundled RemNote flashcard type guide
+- Complete self-contained documentation in SKILL.md
 - Tested and verified on multiple domains
 
 ## 📞 Support

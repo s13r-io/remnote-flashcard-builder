@@ -1,0 +1,34 @@
+{
+  "expectations": [
+    {
+      "text": "Output file exists and contains at least 20 flashcards",
+      "passed": true,
+      "evidence": "102 cards (min 20)"
+    },
+    {
+      "text": "Contains at least 4 Concept cards (::)",
+      "passed": true,
+      "evidence": "14 concept cards (min 4)"
+    },
+    {
+      "text": "Contains at least 2 Bidirectional cards (<>)",
+      "passed": true,
+      "evidence": "6 bidirectional cards (min 2)"
+    },
+    {
+      "text": "Contains at least 1 Multiple-Choice card",
+      "passed": true,
+      "evidence": "18 MC cards (min 1)"
+    },
+    {
+      "text": "Uses at least 5 different card types",
+      "passed": true,
+      "evidence": "8 types (min 5)"
+    },
+    {
+      "text": "Contains no HTML comments or metadata",
+      "passed": true,
+      "evidence": "Clean"
+    }
+  ]
+}

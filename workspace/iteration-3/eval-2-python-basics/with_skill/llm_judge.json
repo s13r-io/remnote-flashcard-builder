@@ -1,0 +1,26 @@
+{
+  "unambiguity": {
+    "score": 90,
+    "total_checked": 31,
+    "problematic_count": 3,
+    "issues": [
+      {"card": "Strings are enclosed in {{quotes}}, lists in {{square brackets}}...", "issue": "quotes could be single quotes, double quotes, or triple quotes — slightly ambiguous phrasing"},
+      {"card": "Both lists and tuples can contain {{any data type}}.", "issue": "The blank could be answered as 'mixed types', 'different types', 'multiple types' etc. — phrasing is not tightly constrained"},
+      {"card": "Each key in a dictionary must be {{unique}}.", "issue": "Could also be answered as 'immutable' or 'hashable' which are equally true constraints on dict keys"}
+    ]
+  },
+  "directionality": {
+    "score": 94,
+    "total_checked": 16,
+    "wrong_direction_count": 1,
+    "issues": [
+      {"card": "Are dictionaries mutable or immutable? >> Mutable — you can add...", "issue": "This is a binary-choice question better suited as MC rather than forward-only, but direction itself is acceptable. Minor: could benefit from bidirectional for the mutable/dictionary association."}
+    ]
+  },
+  "pedagogical_depth": {
+    "score": 95,
+    "levels_present": ["Surface recall", "Contextual recall", "Discrimination", "Identification", "Association"],
+    "levels_missing": [],
+    "notes": "All five cognitive levels are well represented. Surface recall via :: and ;; definitions. Contextual recall via cloze deletions embedded in sentences. Discrimination via 17 multiple-choice cards with plausible distractors. Identification via reverse (<< ) cards requiring recognition from descriptions. Association via bidirectional (<>) cards pairing related concepts like mutable/immutable, parameters/inputs, for loop/while loop."
+  }
+}

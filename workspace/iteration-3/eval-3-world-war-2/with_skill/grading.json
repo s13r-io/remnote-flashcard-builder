@@ -1,0 +1,39 @@
+{
+  "expectations": [
+    {
+      "text": "Output file exists and contains at least 25 flashcards",
+      "passed": true,
+      "evidence": "85 cards (min 25)"
+    },
+    {
+      "text": "Contains at least 3 Concept cards (::)",
+      "passed": true,
+      "evidence": "8 concept cards (min 3)"
+    },
+    {
+      "text": "Contains at least 5 flashcards with dates",
+      "passed": true,
+      "evidence": "24 date cards (min 5)"
+    },
+    {
+      "text": "Contains flashcards for major leaders",
+      "passed": true,
+      "evidence": "Leaders found"
+    },
+    {
+      "text": "Contains at least 1 Multiple-Choice card",
+      "passed": true,
+      "evidence": "12 MC cards (min 1)"
+    },
+    {
+      "text": "Uses at least 5 different card types",
+      "passed": true,
+      "evidence": "8 types (min 5)"
+    },
+    {
+      "text": "Contains no HTML comments or metadata",
+      "passed": true,
+      "evidence": "Clean"
+    }
+  ]
+}
