@@ -2,6 +2,24 @@
 
 A Claude Code skill that converts markdown notes into RemNote-importable flashcards, selecting the optimal card type for each piece of information.
 
+## Installation
+
+Copy `SKILL.md` into your Claude Code skills directory:
+
+**For all projects (personal):**
+```bash
+mkdir -p ~/.claude/skills/remnote-flashcard-builder
+cp remnote-flashcard-builder-skill/SKILL.md ~/.claude/skills/remnote-flashcard-builder/SKILL.md
+```
+
+**For a specific project:**
+```bash
+mkdir -p <your-project>/.claude/skills/remnote-flashcard-builder
+cp remnote-flashcard-builder-skill/SKILL.md <your-project>/.claude/skills/remnote-flashcard-builder/SKILL.md
+```
+
+The skill is automatically available once the file is in place.
+
 ## Usage
 
 Provide a markdown file and ask Claude Code:

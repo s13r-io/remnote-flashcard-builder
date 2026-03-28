@@ -54,8 +54,7 @@ python workspace/quality_analysis.py <notes_file> <new_flashcards> <old_flashcar
 
 ## Key Files
 
-- **`remnote-flashcard-builder.skill`** — Production skill file (install in Claude Code). Rebuild after editing SKILL.md: `cd remnote-flashcard-builder-skill && zip ../remnote-flashcard-builder.skill SKILL.md`
-- **`remnote-flashcard-builder-skill/SKILL.md`** — Skill source definition (source of truth)
+- **`remnote-flashcard-builder-skill/SKILL.md`** — Skill definition (copy to `~/.claude/skills/remnote-flashcard-builder/SKILL.md` to install)
 - **`workspace/quality_analysis.py`** — Validation tool (9 dimensions)
 - **`workspace/iteration-5/`** — Latest test results (8 domains)
 - **`evals/samples/`** — Test data (8 domains: cell biology, Python, WWII, physics, calculus, economics, organic chemistry, Shakespeare)
