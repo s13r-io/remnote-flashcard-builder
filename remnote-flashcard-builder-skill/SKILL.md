@@ -13,7 +13,7 @@ Converts any markdown notes file into RemNote-importable flashcards, selecting t
 
 ### 1. Read and Parse Input
 
-Read the entire markdown file. Identify structure, headings, and all textual content. Preserve original meaning and context.
+Read the entire markdown file. Identify structure, headings, and all textual content. Preserve original meaning and context. Note all markdown headers (`#`, `##`, `###`, etc.) and which content falls under each—this section map will be used to group output cards by source section.
 
 ### 2. Extract Atomic Information Units
 
@@ -54,16 +54,20 @@ For each atomic unit, apply these questions in order. Stop at the first match:
 
 **Still unsure?** Default to **FORWARD BASIC** (`>>`).
 
+### 3.5 Organize by Section
+
+Before generating output, group your classified cards by their source markdown section. Preserve the original header hierarchy. Cards without a clear header belong in a general section at the top.
+
 ## Card Types: Syntax and Examples
 
-- **Concept**: `Term :: Definition` — `Mitochondria :: Membrane-bound organelle that produces ATP via oxidative phosphorylation`
-- **Descriptor**: `attribute ;; value` — `origin ;; Ancient endosymbiotic event with alpha-proteobacterium`
-- **Forward**: `Q >> A` — `What year did WWII end? >> 1945`
-- **Reverse**: `description << Term` — `Describe: fever, neck stiffness, photophobia << Meningitis`
-- **Bidirectional**: `A <> B` — `Fe <> Iron`
-- **Cloze**: `sentence with {{blank}}` — `The {{thylakoid membrane}} is where light-dependent reactions occur.`
-- **Multi-Line**: `Q >>>` then list items on separate lines — `Three branches of US government >>>` / `Executive` / `Legislative` / `Judicial`
-- **Multiple-Choice**: `Q >>A) correct B) wrong C) wrong D) wrong` — `Which organelle produces ATP? >>A) Mitochondria B) Ribosome C) Golgi apparatus D) Nucleus`
+- **Concept**: `- **Term** :: Definition` — `- **Mitochondria** :: Membrane-bound organelle that produces ATP via oxidative phosphorylation`
+- **Descriptor**: `- **attribute** ;; value` — `- **origin** ;; Ancient endosymbiotic event with alpha-proteobacterium`
+- **Forward**: `- **Q?** >> A` — `- **What year did WWII end?** >> 1945`
+- **Reverse**: `- **description** << Term` — `- **Describe: fever, neck stiffness, photophobia** << Meningitis`
+- **Bidirectional**: `- **A** <> B` — `- **Fe** <> Iron`
+- **Cloze**: `- sentence with {{blank}}` — `- The {{thylakoid membrane}} is where light-dependent reactions occur.` (No bold—{{ }} is the visual anchor)
+- **Multi-Line**: `- **Q** >>>` then list items on separate lines — `- **Three branches of US government** >>>` / `Executive` / `Legislative` / `Judicial`
+- **Multiple-Choice**: `- **Q?** >>A) correct B) wrong C) wrong D) wrong` — `- **Which organelle produces ATP?** >>A) Mitochondria B) Ribosome C) Golgi apparatus D) Nucleus`
 
 ## Principles
 
@@ -74,12 +78,13 @@ For each atomic unit, apply these questions in order. Stop at the first match:
 5. **Unambiguity**: Cloze blanks and MC questions must have exactly one correct answer.
 6. **Minimize redundancy**: If two cards test the same fact, use different types or angles.
 7. **Read first**: Read the whole source before classifying to understand context and relationships.
+8. **Bold the prompt**: Wrap the question, term, or identifying part of each card in `**bold**`. This makes cards scannable during review—the eye lands on what needs to be answered. Skip cloze cards (the {{ }} blank already serves this purpose).
 
 ## Example Transformation
 
 **Input (markdown):**
 ```markdown
-# Photosynthesis
+## Photosynthesis Overview
 
 Photosynthesis is the process by which green plants convert sunlight,
 water, and carbon dioxide into glucose and oxygen. It occurs in two main
@@ -90,16 +95,21 @@ membrane and produce ATP and NADPH. The Calvin cycle occurs in the stroma.
 
 **Output (flashcards):**
 ```
-Photosynthesis :: The process by which green plants convert sunlight, water, and carbon dioxide into glucose and oxygen
-light-dependent reactions ;; Occur in the thylakoid membrane and produce ATP and NADPH
-Calvin cycle ;; Also called light-independent reactions, occurs in the stroma
-Photosynthesis occurs in how many main stages? >> Two: light-dependent reactions and light-independent reactions (Calvin cycle)
-The {{thylakoid membrane}} is where the light-dependent reactions of photosynthesis occur.
-The {{stroma}} is where the Calvin cycle occurs in plant cells.
+## Photosynthesis Overview
+
+- **Photosynthesis** :: The process by which green plants convert sunlight, water, and carbon dioxide into glucose and oxygen
+- **light-dependent reactions** ;; Occur in the thylakoid membrane and produce ATP and NADPH
+- **Calvin cycle** ;; Also called light-independent reactions, occurs in the stroma
+- **Photosynthesis occurs in how many main stages?** >> Two: light-dependent reactions and light-independent reactions (Calvin cycle)
+- The {{thylakoid membrane}} is where the light-dependent reactions of photosynthesis occur.
+- The {{stroma}} is where the Calvin cycle occurs in plant cells.
 ```
 
 ## Output
 
 - Write ONLY flashcard syntax to `[input-filename]-flashcards.md` in the same directory as the input
-- One flashcard per line (multi-line and MC cards may span multiple lines)
+- **Preserve markdown headers** — Include the original source section headers (e.g., `## Historical Background`) before the flashcards that belong to that section
+- **Each flashcard must start with a bullet point (`- `)** to ensure proper import into RemNote
+- **Bold the prompt** — Wrap the question/term/identifying part in `**bold**` (except for cloze cards where {{ }} is the visual anchor)
+- One flashcard per line (multi-line and MC cards may span multiple lines after the bullet)
 - No metadata, comments, or explanatory text

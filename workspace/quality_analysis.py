@@ -198,6 +198,9 @@ def check_syntax(lines):
             continue
 
         if ctype == 'other':
+            # Skip if this is a markdown header (intentional organizational output)
+            if re.match(r'^#{1,6}\s', line.strip()):
+                continue
             # Skip if this is a list item under a multi-line card
             if (i - 1) in multiline_item_lines:
                 continue
@@ -362,11 +365,8 @@ def check_clean_output(content, lines):
         issues.append({'issue': f'Contains {len(html_comments)} HTML comment(s)',
                        'examples': [c[:60] for c in html_comments[:3]]})
 
-    # Markdown headers
-    for i, line in enumerate(lines, 1):
-        if re.match(r'^#{1,6}\s', line):
-            issues.append({'issue': f'Line {i}: Markdown header found',
-                           'examples': [line[:60]]})
+    # NOTE: Markdown headers are now EXPECTED output for organization
+    # They are intentional, not metadata, so we skip flagging them
 
     # Blank lines between cards (not a problem per se, but indicates possible metadata)
     # Pre-scan multi-line item ranges
@@ -385,6 +385,9 @@ def check_clean_output(content, lines):
     for i, line in enumerate(lines, 1):
         ctype, _ = classify_card(line)
         if ctype == 'other' and (i - 1) not in multiline_item_lines:
+            # Skip markdown headers (they are intentional organizational output)
+            if re.match(r'^#{1,6}\s', line.strip()):
+                continue
             issues.append({'issue': f'Line {i}: No RemNote syntax — possible metadata or stray text',
                            'examples': [line[:60]]})
 
